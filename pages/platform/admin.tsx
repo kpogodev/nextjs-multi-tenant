@@ -1,6 +1,8 @@
 import Head from "next/head"
+import { trpc } from "@/utils/trpc"
 
 export default function Admin() {
+  const hello = trpc.hello.useQuery({ text: "krzysztof" })
   return (
     <>
       <Head>
@@ -11,6 +13,7 @@ export default function Admin() {
       </Head>
       <main>
         <h1>Hello From Admin</h1>
+        <p>{hello.data?.greeting}</p>
       </main>
     </>
   )
